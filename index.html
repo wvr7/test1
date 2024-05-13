@@ -122,41 +122,55 @@
 
     </script>
     <script>
-
-		var rParams = FAPI.Util.getRequestParameters();
-		FAPI.init(rParams["api_server"], rParams["apiconnection"],
-			  function() {
-				  alert("Инициализация прошла успешно");
-			  },
-			  function(error) {
-				  alert("Ошибка инициализации");
-			  }
-		);
+		
+		var myGameInstance = null; // объявление переменной юнити, для обращения к функциям юнити из жаваскрипта
+		script.onload = () => {
+			createUnityInstance(canvas, config, (progress) => {
+				progressBarFull.style.width = 100 * progress + "%";
+			}).then((unityInstance) => { 
+				myGameInstance = unityInstance;			
+				loadingBar.style.display = "none";
+				fullscreenButton.onclick = () => {
+					unityInstance.SetFullscreen(1);
+				};
+			}).catch((message) => {
+				alert(message);
+			});
+		};
+		//myGameInstance.SendMessage('ConnectJs', 'ResponseOk'); // пример обращения к скриптам юнити из жаваскрипта
 		jQuery(document).ready(function($) // страница прогружена
 		{
 			var rParams = FAPI.Util.getRequestParameters();
 			FAPI.init(rParams["api_server"], rParams["apiconnection"], // Инициализация SDK Одноклассников
 				  function() {
 					  alert("Инициализация прошла успешно");
+
 				  },
 				  function(error) {
 					  alert("Ошибка инициализации");
 				  }
 			);
 		});
-
-
+		
 		function FromUnityToJs () {
+			alert("тестовая кнопка для алерта")
 			FAPI.UI.showPayment("Яблоко", "Это очень вкусно!", 777, 1, null, null, "ok", "true")
 		}
 		
 		function BuyTest() {
+			FAPI.UI.showPayment("Яблоко", "Это очень вкусно!", 777, 1, null, null, "ok", "true")
+			//
+			//	 Пример вызова showPayment().
+			//   Внимание! Сервер должен подтвердить оплату, иначе списывание средств пользователя не происходит.
+			//	
 		}
 		
 		function AdTest() {
+			FAPI.UI.showPayment("Яблоко", "Это очень вкусно!", 777, 1, null, null, "ok", "true")
 		}
 		
 		function LoginTest() {
+			FAPI.UI.showPayment("Яблоко", "Это очень вкусно!", 777, 1, null, null, "ok", "true")
 		}
 		
 		function API_callback(method, result, data){
