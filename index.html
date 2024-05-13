@@ -122,6 +122,7 @@
 
     </script>
     <script>
+		
 		var myGameInstance = null; // объявление переменной юнити, для обращения к функциям юнити из жаваскрипта
 		script.onload = () => {
 			createUnityInstance(canvas, config, (progress) => {
@@ -157,10 +158,6 @@
 		
 		function BuyTest() {
 			FAPI.UI.showPayment("Яблоко", "Это очень вкусно!", 777, 1, null, null, "ok", "true")
-			//
-			//	 Пример вызова showPayment().
-			//   Внимание! Сервер должен подтвердить оплату, иначе списывание средств пользователя не происходит.
-			//	
 		}
 		
 		function AdTest() {
