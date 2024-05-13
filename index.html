@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Game functions test</title>
+    <title>Unity WebGL Player | FuncTest</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <script type="text/javascript" src="//api.ok.ru/js/fapi5.js" defer="defer"></script>
+	<script src="jquery-3.7.1.min.js"></script>
+	<script type="text/javascript" src="//api.ok.ru/js/fapi5.js" defer="defer"></script>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -21,10 +22,11 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Game functions test</div>
+        <div id="unity-build-title">FuncTest</div>
       </div>
     </div>
     <script>
+
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
@@ -57,14 +59,14 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/Build.loader.js";
+      var loaderUrl = buildUrl + "/build 0.loader.js";
       var config = {
-        dataUrl: buildUrl + "/Build.data",
-        frameworkUrl: buildUrl + "/Build.framework.js",
-        codeUrl: buildUrl + "/Build.wasm",
+        dataUrl: buildUrl + "/build 0.data.br",
+        frameworkUrl: buildUrl + "/build 0.framework.js.br",
+        codeUrl: buildUrl + "/build 0.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "Game functions test",
+        productName: "FuncTest",
         productVersion: "1.0",
         showBanner: unityShowBanner,
       };
@@ -116,39 +118,32 @@
             };
 
       document.body.appendChild(script);
-
+		
+		
+		
     </script>
-
-    <script>   // Пользовательский код
-	/*
-    * Инициализация API
-    */
-    var rParams = FAPI.Util.getRequestParameters();
-    FAPI.init(rParams["api_server"], rParams["apiconnection"],
-          /*
-          * Первый параметр:
-          * функция, которая будет вызвана после успешной инициализации.
-          */
-          function() {
-              alert("Инициализация прошла успешно");
-              // здесь можно вызывать методы API
-          },
-          /*
-          * Второй параметр:
-          * функция, которая будет вызвана, если инициализация не удалась.
-          */
-          function(error) {
-              alert("Ошибка инициализации");
-          }
-    );
-    function FromUnityToJs ()   // функция вызывается из Unity
-        {
-        	showInterstitialAd();
-        }
-
-    function showInterstitialAd() {
-        FAPI.UI.showAd()
-    }
-    </script>
-  </body>
+	<script>
+	 
+		function FromUnityToJs ()
+		{
+			alert ("Very good!");
+		} 
+		
+		jQuery(document).ready(function($) // страница прогружена
+		{
+			var rParams = FAPI.Util.getRequestParameters();
+			FAPI.init(rParams["api_server"], rParams["apiconnection"], // инициализация SDK
+				function() {
+					alert("Инициализация прошла успешно");
+				},
+				function(error) {
+					alert("Ошибка инициализации");
+				}
+			);
+		});
+		
+		function API_callback(method, result, data);
+		
+	</script>
+ </body>
 </html>
