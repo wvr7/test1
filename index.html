@@ -6,7 +6,6 @@
     <title>Unity WebGL Player | FuncTest</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-	<script type="text/javascript" src="//api.ok.ru/js/fapi5.js" defer="defer"></script>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -60,9 +59,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/build 0.loader.js";
       var config = {
-        dataUrl: buildUrl + "/build 0.data.br",
-        frameworkUrl: buildUrl + "/build 0.framework.js.br",
-        codeUrl: buildUrl + "/build 0.wasm.br",
+        dataUrl: buildUrl + "/build 0.data",
+        frameworkUrl: buildUrl + "/build 0.framework.js",
+        codeUrl: buildUrl + "/build 0.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "FuncTest",
@@ -117,29 +116,7 @@
             };
 
       document.body.appendChild(script);
-		
-		
-		
+
     </script>
-	<script>
-	 
-		function FromUnityToJs ()
-		{
-			alert ("Very good!");
-		} 
-	
-		function API_callback(method, result, data);
-		
-		var rParams = FAPI.Util.getRequestParameters();
-		FAPI.init(rParams["api_server"], rParams["apiconnection"], // инициализация SDK
-			function() {
-				alert("Инициализация прошла успешно");
-			},
-			function(error) {
-				alert("Ошибка инициализации");
-			}
-		);
-			
-	</script>
- </body>
+  </body>
 </html>
