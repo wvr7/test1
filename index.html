@@ -6,6 +6,7 @@
     <title>Unity WebGL Player | FuncTest</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="//api.ok.ru/js/fapi5.js" defer="defer"></script>
   </head>
   <body>
@@ -121,16 +122,19 @@
 
     </script>
     <script>
-
-		var rParams = FAPI.Util.getRequestParameters();
-		FAPI.init(rParams["api_server"], rParams["apiconnection"],
-			  function() {
-				  alert("Инициализация прошла успешно");
-			  },
-			  function(error) {
-				  alert("Ошибка инициализации");
-			  }
-		);
+		jQuery(document).ready(function($) // страница прогружена
+		{
+			var rParams = FAPI.Util.getRequestParameters();
+			FAPI.init(rParams["api_server"], rParams["apiconnection"], // Инициализация SDK Одноклассников
+				  function() {
+					  alert("Инициализация прошла успешно");
+				  },
+				  function(error) {
+					  alert("Ошибка инициализации");
+				  }
+			);
+		});
+		
 		
 		function FromUnityToJs () {
 			FAPI.UI.showPayment("Яблоко", "Это очень вкусно!", 777, 1, null, null, "ok", "true")
