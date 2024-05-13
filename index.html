@@ -133,11 +133,7 @@
 		);
 		
 		function FromUnityToJs () {
-			showAd()
-		}
-
-		function showAd() {
-			FAPI.UI.showAd()
+			FAPI.UI.showPayment("Яблоко", "Это очень вкусно!", 777, 1, null, null, "ok", "true")
 		}
 		
 		function API_callback(method, result, data){
