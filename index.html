@@ -153,8 +153,8 @@
 		});
 		
 		function FromUnityToJs () {
-			alert("тестовая кнопка для алерта")
-			FAPI.UI.showPayment("Яблоко", "Это очень вкусно!", 777, 1, null, null, "ok", "true")
+			//alert("тестовая кнопка для алерта")
+			myGameInstance.SendMessage('ConnectJs', 'ResponseOk'); // пример обращения к скриптам юнити из жаваскрипта
 		}
 		
 		function BuyTest() {
@@ -166,11 +166,10 @@
 		}
 		
 		function AdTest() {
-			FAPI.UI.showPayment("Яблоко", "Это очень вкусно!", 777, 1, null, null, "ok", "true")
+			FAPI.UI.showAd()
 		}
 		
 		function LoginTest() {
-			FAPI.UI.showPayment("Яблоко", "Это очень вкусно!", 777, 1, null, null, "ok", "true")
 		}
 		
 		function API_callback(method, result, data){
