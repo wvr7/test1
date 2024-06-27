@@ -213,7 +213,7 @@
 		        } else {
 		            alert("Ошибка при показе rewarded-рекламы: " + data);
 		        }
-		    } else if (method === "users.getInfo") {
+		    } else if (method === "users.getCurrentUser") {
 		        if (result === "ok") {
 		            var userInfo = data[0];
 		            alert("ID пользователя: " + userInfo.uid + "\nИмя: " + userInfo.first_name + "\nФамилия: " + userInfo.last_name);
