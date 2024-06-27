@@ -181,7 +181,9 @@
 		}
 		
 		function LoginTest() {
+			FAPI.UI.loadAd();
 		}
+	    	
 	    	// Глобальная функция обратного вызова
 		function API_callback(method, result, data) {
 		    if (method === "showAd") {
@@ -190,8 +192,25 @@
 			} else {
 			    alert("Ошибка при выполнении showAd: " + (data || "Неизвестная ошибка"));
 			}
+		    
+		    } else if (method === "loadAd") {
+		        if (result === "ok") {
+		            alert("Rewarded-реклама успешно загружена!");
+		            FAPI.UI.showLoadedAd();
+		        } else {
+		            alert("Ошибка при загрузке rewarded-рекламы: " + data);
+		        }
+		    
+		    } else if (method === "showLoadedAd") {
+		        if (result === "ok") {
+		            alert("Rewarded-реклама успешно показана!");
+		        } else {
+		            alert("Ошибка при показе rewarded-рекламы: " + data);
+		        }
 		    }
 		}
+
+		
   
     
     </script>
