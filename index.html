@@ -178,10 +178,11 @@
 		
 		function AdTest() {
 			FAPI.UI.showAd()
+			// или попробовать FAPI.UI.loadAd(); - оба выдают data: "no_ads"
 		}
 		
 		function LoginTest() {
-			FAPI.UI.loadAd();
+			
 		}
 	    	
 	    	// Глобальная функция обратного вызова
@@ -190,7 +191,7 @@
 			if (result === "ok") {
 			    alert("Функция showAd успешно выполнена!");
 			} else {
-			    alert("Ошибка при выполнении showAd: " + (data || "Неизвестная ошибка"));
+			    alert("Ошибка при выполнении showAd: " + data);
 			}
 		    
 		    } else if (method === "loadAd") {
