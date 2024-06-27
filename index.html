@@ -182,8 +182,14 @@
 		}
 		
 		function LoginTest() {
-			//https://api.ok.ru/fb.do?method=users.getCurrentUser
+			var rParams = FAPI.Util.getRequestParameters();
+			// //https://api.ok.ru/fb.do?method=users.getCurrentUser
 			alert(rParams["session_key"] + "\n" + rParams["session_secret_key"]);
+
+			// FAPI.Client.call({
+			//         method: 'users.getInfo',
+			//         fields: 'uid,first_name,last_name,pic_1,pic_2,pic_3,pic_4'
+		 //   	});
 			
 		}
 	    	
