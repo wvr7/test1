@@ -182,7 +182,10 @@
 		}
 		
 		function LoginTest() {
-			
+			FAPI.Client.call({
+		        method: 'users.getInfo',
+		        fields: 'uid,first_name,last_name,pic_2'
+			}	
 		}
 	    	
 	    	// Глобальная функция обратного вызова
@@ -208,12 +211,18 @@
 		        } else {
 		            alert("Ошибка при показе rewarded-рекламы: " + data);
 		        }
-		    }
+		    } else if (method === "users.getInfo") {
+		        if (result === "ok") {
+		            var userInfo = data[0];
+		            alert("ID пользователя: " + userInfo.uid + "\nИмя: " + userInfo.first_name + "\nФамилия: " + userInfo.last_name + "\nАватар: " + userInfo.pic_2);
+		            // Можно передать данные в Unity
+		            //myGameInstance.SendMessage('ConnectJs', 'SetUserInfo', JSON.stringify(userInfo));
+		        } else {
+		            alert("Ошибка при получении информации о пользователе: " + data);
+		        }
+		    }	
 		}
-
-		
-  
-    
+	    
     </script>
   </body>
 </html>
