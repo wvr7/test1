@@ -214,7 +214,7 @@
 		    } else if (method === "users.getInfo") {
 		        if (result === "ok") {
 		            var userInfo = data[0];
-		            alert("ID пользователя: " + userInfo.uid + "\nИмя: " + userInfo.first_name + "\nФамилия: " + userInfo.last_name + "\nАватар: " + userInfo.pic_2);
+		            alert("ID пользователя: " + userInfo.uid + "\nИмя: " + userInfo.first_name + "\nФамилия: " + userInfo.last_name);
 		            // Можно передать данные в Unity
 		            //myGameInstance.SendMessage('ConnectJs', 'SetUserInfo', JSON.stringify(userInfo));
 		        } else {
