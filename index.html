@@ -183,10 +183,10 @@
 		
 		function LoginTest() {
 			FAPI.Client.call({
-		        method: 'users.getInfo',
+		        method: 'users.getCurrentUser',
 		        fields: 'uid,first_name,last_name,pic_2'
 			}, function(response) {
-			        API_callback('users.getInfo', response.status, response.data);
+			        API_callback('users.getInfo', "ok", response.data);
 			});	
 		}
 	    	
