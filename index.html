@@ -158,11 +158,22 @@
 		}
 		
 		function BuyTest() {
-			FAPI.UI.showPayment("Яблоко", "Это очень вкусно!", 777, 999999999, null, null, "ok", "true")
-			//
+			FAPI.UI.showPayment("name", "desciption", 1000, 10, null, null, "ok", "true")
 			//	 Пример вызова showPayment().
 			//   Внимание! Сервер должен подтвердить оплату, иначе списывание средств пользователя не происходит.
-			//	
+			//
+			//FAPI.UI.showPayment(
+			//	name,
+			//	description,
+			//	code,
+			//	price,
+			//	options, // устарело - всегда null
+			//	attributes, // Кодированные JSON пары ключей/значений, содержащие дополнительные параметры транзакции, которые будут переданы на сервер
+			//	currency, // по умолчанию - всегда ok
+			//	callback, // обновить приложение false - не обновлять а отправить callback true
+			//	uiConf // Кодированные JSON пары ключей/значений, содержащие конфигурацию для отображения UI диалога оплаты. См. раздел «Возможные значения атрибута uiConf» ниже.
+			//);	
+				// https://apiok.ru/dev/sdk/js/ui.showPayment/
 		}
 		
 		function AdTest() {
@@ -171,9 +182,17 @@
 		
 		function LoginTest() {
 		}
-		
-		function API_callback(method, result, data){
+	    	// Глобальная функция обратного вызова
+		function API_callback(method, result, data) {
+		    if (method === "showAd") {
+			if (result === "ok") {
+			    alert("Функция showAd успешно выполнена!");
+			} else {
+			    alert("Ошибка при выполнении showAd: " + (data || "Неизвестная ошибка"));
+			}
+		    }
 		}
+  
     
     </script>
   </body>
