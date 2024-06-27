@@ -182,12 +182,9 @@
 		}
 		
 		function LoginTest() {
-			FAPI.Client.call({
-		        method: 'users.getCurrentUser',
-		        fields: 'uid,first_name,last_name,pic_2'
-			}, function(response) {
-			        API_callback('users.getInfo', "ok", response.data);
-			});	
+			//https://api.ok.ru/fb.do?method=users.getCurrentUser
+			alert(rParams["session_key"] + "\n" + rParams["session_secret_key"]);
+			
 		}
 	    	
 	    	// Глобальная функция обратного вызова
