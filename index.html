@@ -182,14 +182,13 @@
 		}
 		
 		function LoginTest() {
-			var rParams = FAPI.Util.getRequestParameters();
-			// //https://api.ok.ru/fb.do?method=users.getCurrentUser
-			alert("session_key: " +rParams["session_key"] + "\nsession_secret_key: " + rParams["session_secret_key"]);
-				
-			// FAPI.Client.call({
-			//         method: 'users.getInfo',
-			//         fields: 'uid,first_name,last_name,pic_1,pic_2,pic_3,pic_4'
-		 //   	});
+			// var rParams = FAPI.Util.getRequestParameters();
+			// // //https://api.ok.ru/fb.do?method=users.getCurrentUser
+			// alert("session_key: " +rParams["session_key"] + "\nsession_secret_key: " + rParams["session_secret_key"]);
+			var callback_users_getCurrentUser = function(status, data, error){
+				alert(data);
+			};
+			FAPI.Client.call({"method":"users.getCurrentUser", "fields":"first_name,last_name"}, callback_users_getInfo);
 			
 		}
 	    	
