@@ -180,17 +180,36 @@
 			FAPI.UI.showAd()
 			// или попробовать FAPI.UI.loadAd(); - оба выдают data: "no_ads"
 		}
-		
+
+
 		function LoginTest() {
-			// var rParams = FAPI.Util.getRequestParameters();
-			// // //https://api.ok.ru/fb.do?method=users.getCurrentUser
-			// alert("session_key: " +rParams["session_key"] + "\nsession_secret_key: " + rParams["session_secret_key"]);
-			var callback_users_getCurrentUser = function(status, data, error){
-				alert("ID пользователя: " + data["uid"] + "\nИмя: " + data["first_name"] + "\nФамилия: " + data["last_name"]);	
-			};
-			FAPI.Client.call({"method":"users.getCurrentUser", "fields":"uid,first_name,last_name,pic_2"}, callback_users_getCurrentUser);
-			
+		    var callback_users_getCurrentUser = function(status, data, error) {
+			if (status === "ok") {
+			    var userInfo = {
+				uid: data.uid,
+				firstName: data.first_name,
+				lastName: data.last_name,
+				avatar: data.pic_2
+			    };
+			    var userInfoJson = JSON.stringify(userInfo);
+			    myGameInstance.SendMessage('ConnectJs', 'ReceiveUserInfo', userInfoJson);
+			} else {
+			    alert("Ошибка получения информации о пользователе: " + error);
+			}
+		    };
+		    FAPI.Client.call({"method": "users.getCurrentUser", "fields": "uid,first_name,last_name,pic_2"}, callback_users_getCurrentUser);
 		}
+
+		// function LoginTest() {
+		// 	// получение session key
+		// 	// var rParams = FAPI.Util.getRequestParameters();
+		// 	// alert("session_key: " +rParams["session_key"] + "\nsession_secret_key: " + rParams["session_secret_key"]);
+		// 	var callback_users_getCurrentUser = function(status, data, error){
+		// 		//alert("ID пользователя: " + data["uid"] + "\nИмя: " + data["first_name"] + "\nФамилия: " + data["last_name"]);
+		// 		myGameInstance.SendMessage('ConnectJs', 'ResponseOk');
+		// 	};
+		// 	FAPI.Client.call({"method":"users.getCurrentUser", "fields":"uid,first_name,last_name,pic_2"}, callback_users_getCurrentUser);			
+		// }
 	    	
 	    	// Глобальная функция обратного вызова
 		function API_callback(method, result, data) {
