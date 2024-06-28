@@ -186,10 +186,9 @@
 			// // //https://api.ok.ru/fb.do?method=users.getCurrentUser
 			// alert("session_key: " +rParams["session_key"] + "\nsession_secret_key: " + rParams["session_secret_key"]);
 			var callback_users_getCurrentUser = function(status, data, error){
-				alert(data["first_name"]);
-				alert(data[0]["first_name"]);
+				alert("ID пользователя: " + data["uid"] + "\nИмя: " + data["first_name"] + "\nФамилия: " + data["last_name"]);	
 			};
-			FAPI.Client.call({"method":"users.getCurrentUser", "fields":"first_name,last_name"}, callback_users_getCurrentUser);
+			FAPI.Client.call({"method":"users.getCurrentUser", "fields":"uid,first_name,last_name,pic_2"}, callback_users_getCurrentUser);
 			
 		}
 	    	
