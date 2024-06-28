@@ -186,7 +186,8 @@
 			// // //https://api.ok.ru/fb.do?method=users.getCurrentUser
 			// alert("session_key: " +rParams["session_key"] + "\nsession_secret_key: " + rParams["session_secret_key"]);
 			var callback_users_getCurrentUser = function(status, data, error){
-				alert(data);
+				alert(data["first_name"]);
+				alert(data[0]["first_name"]);
 			};
 			FAPI.Client.call({"method":"users.getCurrentUser", "fields":"first_name,last_name"}, callback_users_getCurrentUser);
 			
